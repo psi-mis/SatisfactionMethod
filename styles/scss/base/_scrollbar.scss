@@ -1,0 +1,26 @@
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+// Margen alrededor del pulgar
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 4px solid transparent;  // Espacio transparente para el margen
+  background-clip: content-box;  // Clip del fondo para no incluir el borde/margen
+  border-radius: 8px; // Borde redondeado
+  
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+}
+
+// Pista del scrollbar
+::-webkit-scrollbar-track {
+  background: transparent;
+  //border-radius: 8px;
+}
+
+// Esquinas de la pista
+::-webkit-scrollbar-corner {
+  background: transparent;
+}

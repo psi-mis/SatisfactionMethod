@@ -1,0 +1,50 @@
+.progressbar {
+    overflow: hidden;
+    counter-reset: step;
+    
+    li {
+      list-style-type: none;
+        color: white;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 9px;
+        width: 33%;
+        float: left;
+        position: relative;
+  
+        &:first-child:after {
+          content: none;
+        }
+      
+      &:before {
+        content: counter(step);
+          counter-increment: step;
+          width: 20px;
+          line-height: 20px;
+          display: block;
+          font-size: 10px;
+          color: #fff;
+          background: #757575;
+          border-radius: 3px;
+          margin: 0 auto 5px auto;
+      }
+      
+      &:after {
+        content: "";
+          width: 100%;
+          height: 2px;
+          background: #757575;
+          position: absolute;
+          left: -50%;
+          top: 9px;
+          z-index: -1;
+      }
+      
+      &.active {
+        &:before, &:after {
+          background: $Primary02;
+          color: #fff;
+        }
+      }
+    }
+  }

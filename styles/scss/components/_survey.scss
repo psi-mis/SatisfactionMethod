@@ -1,0 +1,27 @@
+.grid-survey {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.grid-row {
+  min-height: 36px;
+  padding: 8px;
+  border-bottom: 1px solid $Neutral03;
+
+  &:hover {
+    background-color: $Neutral02;
+  }
+}
+.grid-survey[name="step2an2"] {
+  padding-top: 20px;
+}
+
+.grid-satisfaction {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-auto-columns: 1fr;
+  gap: 8px 8px;
+  grid-auto-flow: row;
+  align-items: center;
+}

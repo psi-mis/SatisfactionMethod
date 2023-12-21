@@ -1,0 +1,19 @@
+@import "utils/variables", "utils/mixins";
+
+@import "base/typography", "base/reset", "base/scrollbar", "base/images";
+
+@import "layouts/body";
+
+@import "components/progressbar", "components/survey", "components/cards",
+  "components/buttons", "components/checkboxes", "components/satisfaction";
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  //website not clickable
+  -webkit-user-select: none; /* Chrome, Safari y Opera */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Estándar W3C */
+}

@@ -1,0 +1,39 @@
+#qnr {
+  .question {
+    width: 100%;
+    padding: 8px 0 20px;
+    border-bottom: 1px solid $Neutral03;
+
+    .question-answer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .text-question {
+        flex-grow: 1;
+      }
+
+      .answer-selected {
+        display: inline-block;
+        div {
+          border-radius: 50%;
+          cursor: pointer;
+          margin: 0 5px;
+          @include box-shadow();
+        }
+      }
+    }
+
+    .optns {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 10px;
+      div {
+        border-radius: 50%;
+        cursor: pointer;
+        margin: 0 1vw;
+        @include box-shadow();
+      }
+    }
+  }
+}

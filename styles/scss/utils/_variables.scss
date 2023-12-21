@@ -1,0 +1,24 @@
+$-opacity-05: 0.05;
+$-opacity-30: 0.3;
+$Shade01: #FFFFFF;
+$Shade02: #222222;
+$Shade02-05: rgba(var($Shade02), var($-opacity-05));
+$Shade02-30: rgba(var($Shade02), var($-opacity-30));
+$Neutral01: #f7f7f7;
+$Neutral02: #ebebeb;
+$Neutral03: #dddddd;
+$Primary01: #27ae60;
+$Primary02: #6ba648;
+$Secondary1: #0e9747;
+$Secondary2: #dff1d4;
+$Error01: #FEF8F6;
+$Error02: #C13515;
+$Accent01: #F6D7DF;
+$Accent02: #D03660;
+
+// limit lines
+// card1
+$limit-1line: 1;
+$limit-2line: 2;
+$limit-3line: 3;
+$limit-line-srvs: 3;

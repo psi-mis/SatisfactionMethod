@@ -1,0 +1,19 @@
+.btn-primary {
+  @include button-styles($Primary02, $Shade01, $Primary02, 22px);
+}
+
+.btn-secondary {
+  @include button-styles($Shade01, $Shade02, 22px, 2px solid $Shade02);
+}
+
+.btn-disabled {
+  color: $Neutral02;
+  background-color: $Neutral01;
+  border-color: $Neutral02;
+  &:hover{
+    cursor:no-drop;
+    color: $Neutral02;
+    background-color: $Neutral01;
+    background-color: transparent;
+  }
+}

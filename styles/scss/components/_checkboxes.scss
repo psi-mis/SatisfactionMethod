@@ -1,0 +1,126 @@
+.checkbox {
+  display: block;
+  position: relative;
+  padding-right: 35px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 1.6rem;
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    &:checked {
+      ~ {
+        .checkmark {
+          background-color: $Primary01;
+          &:after {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+  &:hover {
+    input {
+      ~ {
+        .checkmark {
+          background-color: $Primary02;
+        }
+      }
+    }
+  }
+  .checkmark {
+    &:after {
+      left: 7px;
+      top: 2px;
+      width: 4px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+  }
+}
+
+.radio {
+  display: block;
+  position: relative;
+  padding-right: 35px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 1.6rem;
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    &:checked {
+      ~ {
+        .radiomark {
+          background-color: $Primary01;
+          &:after {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+  &:hover {
+    input {
+      ~ {
+        .radiomark {
+          background-color: $Primary02;
+        }
+      }
+    }
+  }
+  .radiomark {
+    &:after {
+      left: 7px;
+      top: 2px;
+      width: 4px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+  }
+}
+
+.checkmark, .radiomark {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 24px;
+  width: 24px;
+  background-color: $Secondary2;
+  border: 2px solid #ddd;
+  &:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+}
+
+.checkmark {border-radius: 4px;}
+.radiomark {border-radius: 12px;}
+
+.yn_radio_cnt {
+  display: flex;
+    justify-content: flex-end;
+    padding-right: 8px;
+    gap: 10px;
+}

@@ -1,0 +1,29 @@
+.card {
+  border-bottom: none;
+  .title {
+    width: 100%;
+    height: auto;
+  }
+  .subtitle {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  .para {
+    width: 100%;
+    height: auto;
+    max-width: 620px;
+    margin-bottom: 20px;
+  }
+
+  .img-c{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  &:hover {
+    cursor: initial;
+    background-color: transparent;
+  }
+}
