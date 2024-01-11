@@ -26,10 +26,10 @@
       </div>
     </div>
     <div class="wrapper">
-      <div class="section">
-        <div class="grid-survey">
+      <div class="section complete-height">
+        <div class="grid-survey center-flex">
           <div class="grid-row card">
-            <div class="subtitle">¡Hola! Gracias por confiar en nosotros. Si utilizas un método anticonceptivo es importante que te sientas
+            <div class="subtitle center-text">¡Hola! Gracias por confiar en nosotros. Si utilizas un método anticonceptivo es importante que te sientas
               cómoda y tranquila con él. Nos gustaría conocer tu experiencia. Tu
               participación en esta breve encuesta es voluntaria</div>
             <div class="para">
@@ -49,55 +49,55 @@
           <div class="grid-row">
             <label class="radio para"
               >Implante
-              <input type="radio" name="step2cks1" value="Implante" />
+              <input type="radio" name="step2cks1" value="IMP" />
               <span class="radiomark"></span>
             </label>
           </div>
           <div class="grid-row">
             <label class="radio para"
               >Inyectable
-              <input type="radio" name="step2cks1" value="Inyectable" />
+              <input type="radio" name="step2cks1" value="INJ" />
               <span class="radiomark"></span>
             </label>
           </div>
           <div class="grid-row">
             <label class="radio para"
               >DIU
-              <input type="radio" name="step2cks1" value="DIU" />
+              <input type="radio" name="step2cks1" value="IUD" />
               <span class="radiomark"></span>
             </label>
           </div>
           <div class="grid-row">
             <label class="radio para"
               >Anticonceptivos Orales
-              <input type="radio" name="step2cks1" value="Anticonceptivos orales" />
+              <input type="radio" name="step2cks1" value="OCC" />
               <span class="radiomark"></span>
             </label>
           </div>      
           <div class="grid-row">
             <label class="radio para"
               >Anticonceptivo de Emergencia
-              <input type="radio" name="step2cks1" value="Anticonceptivo de Emergencia" />
+              <input type="radio" name="step2cks1" value="EME" />
               <span class="radiomark"></span>
             </label>
           </div>
           <div class="grid-row">
             <label class="radio para"
               >Condón
-              <input type="radio" name="step2cks1" value="Condon" />
+              <input type="radio" name="step2cks1" value="CDM" />
               <span class="radiomark"></span>
             </label>
           </div>
           <div class="grid-row">
             <label class="radio para"> Otro
-              <input type="radio" name="step2cks1" value="Otro" />
+              <input type="radio" name="step2cks1" value="OTH" />
               <span class="radiomark"></span>
             </label>
           </div>
           <div class="grid-row">
             <label class="radio para"
               >Prefiero no decir
-              <input type="radio" name="step2cks1" value="Otro" />
+              <input type="radio" name="step2cks1" value="NSP" />
               <span class="radiomark"></span>
             </label>
           </div>
@@ -110,12 +110,12 @@
         <div class="yn_radio_cnt">
           <label class="radio para"
             >Si
-            <input type="radio" name="step2radio" value="Si" />
+            <input type="radio" name="step2radio" value="true" id="Si"/>
             <span class="radiomark"></span>
           </label>
           <label class="radio para"
             >No
-            <input type="radio" name="step2radio" value="No" />
+            <input type="radio" name="step2radio" value="false" id="No"/>
             <span class="radiomark"></span>
           </label>
         </div>
@@ -129,28 +129,28 @@
           <div class="grid-row para">
             <label class="radio para"
               >Podría estar embarazada
-              <input type="radio" name="step2cks2" value="embarazada" />
+              <input type="radio" name="step2cks2" value="MBP" />
               <span class="radiomark"></span>
             </label>
           </div>
           <div class="grid-row para">
             <label class="radio para"
               >Miedo a ser infértil
-              <input type="radio" name="step2cks2" value="infertil" />
+              <input type="radio" name="step2cks2" value="FOI" />
               <span class="radiomark"></span>
             </label>
           </div>
           <div class="grid-row para">
             <label class="radio para"
               >Efectos secundarios
-              <input type="radio" name="step2cks2" value="efectsec" />
+              <input type="radio" name="step2cks2" value="SEF" />
               <span class="radiomark"></span>
             </label>
           </div>
           <div class="grid-row para">
             <label class="radio para"
               >Otras razones
-              <input type="radio" name="step2cks2" value="Otras" />
+              <input type="radio" name="step2cks2" value="OTR" />
               <span class="radiomark"></span>
             </label>
           </div>
@@ -165,68 +165,70 @@
           <div class="grid-row para">
             <label class="checkbox para"
               >Cambios en mi período menstrual
-              <input type="checkbox" />
+              <input type="checkbox" id="checkbox-period-changes"/>
               <span class="checkmark"></span>
             </label>
           </div>
           <div class="grid-row para">
             <label class="checkbox para"
               >Dolor de cabeza
-              <input type="checkbox" />
+              <input type="checkbox" id="checkbox-headache"/>
               <span class="checkmark"></span>
             </label>
           </div>
           <div class="grid-row para">
             <label class="checkbox para"
               >Aumento de peso
-              <input type="checkbox" />
+              <input type="checkbox" id="checkbox-weight-increase"/>
               <span class="checkmark"></span>
             </label>
           </div>
           <div class="grid-row para">
             <label class="checkbox para"
               >Cólicos
-              <input type="checkbox" />
+              <input type="checkbox" id="checkbox-stomachache"/>
               <span class="checkmark"></span>
             </label>
           </div>
           <div class="grid-row para">
             <label class="checkbox para"
               >Cambios de humor
-              <input type="checkbox" />
+              <input type="checkbox" id="checkbox-humor-changes"/>
               <span class="checkmark"></span>
             </label>
           </div>
           <div class="grid-row para">
             <label class="checkbox para"
               >Otro
-              <input type="checkbox" />
+              <input type="checkbox" id="checkbox-other"/>
               <span class="checkmark"></span>
             </label>
           </div>
         </div>
       </div>
 
-      <div class="section" style="display: none">
-        <div class="grid-survey" name="happy" style="display: none">
+      <div class="section complete-height" style="display: none">
+        <div class="grid-survey center-flex" name="happy" style="display: none">
           <div class="grid-row card">
-            <div class="subtitle">
+            <div class="subtitle center-text">
               Nos alegra mucho que tu método se haya adaptado a tus necesidades
-              y tu cuerpo.
+              y tu cuerpo. Siempre estamos disponibles cuando necesites información o más
+              servicios.
             </div>
             <div class="para">
-              Siempre estamos disponibles cuando necesites información o más
-              servicios.
+              
             </div>
           </div>
         </div>
         <!-- NOT HAPPY / NOT EFECTOS SECUNDARIOS-->
-        <div class="grid-survey" name="NotEffects" style="display: none">
+        <div class="grid-survey center-flex" name="NotEffects" style="display: none">
           <div class="grid-row card">
-            <div class="subtitle">
+            <div class="subtitle center-text">
               Si no te sientes cómoda con el método que estás utilizando recuerda que hay otras opciones disponibles que pueden adecuarse mejor a tus necesidades.
               
               <!-- Agregar un punto y aparte en este texto-->
+              <br>
+              <br>
               Si necesitas más asesoría contacta a tu agente de servicios en Úsala Bien.
             </div>
             <div class="para">
@@ -236,9 +238,9 @@
         </div>
 
         <!-- NOT HAPPY / EFECTOS SECUNDARIOS-->
-        <div class="grid-survey" name="Effects" style="display: none">
+        <div class="grid-survey center-flex" name="Effects" style="display: none">
           <div class="grid-row card">
-            <div class="subtitle">
+            <div class="subtitle center-text">
               Entiendo que este efecto secundario te esté dando molestias.  Si necesitas más asesoría contacta a tu agente de servicios en Úsala Bien.
             </div>
             <div class="para">
@@ -250,6 +252,7 @@
     <div class="footer">
       <div id="back" class="btn-primary" style="display: none">Anterior</div>
       <div id="next" class="btn-primary">Siguiente</div>
+      <div id="send" class="btn-primary">Enviar Encuesta</div>
     </div>
   </div>
 </html>

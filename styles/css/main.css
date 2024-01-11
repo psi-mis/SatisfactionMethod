@@ -509,4 +509,17 @@ body {
   user-select: none; /* Estándar W3C */
 }
 
+.complete-height{
+  height: 100%;
+  display:flex;
+}
+
+.center-flex{
+  justify-content: center;
+  align-items: center;
+}
+.center-text{
+  text-align: center;
+}
+
 /*# sourceMappingURL=main.css.map */
