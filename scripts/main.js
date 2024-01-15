@@ -1,14 +1,49 @@
 $(document).ready(function () {
-  var currentStep = 1;
-  var $btnNext = $("#next");
-  var $btnBack = $("#back");
-  var $btnSend = $("#send");
-  var isEfectosSecundariosSelected;
 
-  // Hide the "Siguiente" button at startup
+  const url = '';
+  const username = '';
+  const password = '';
+
+  var queryParams = getUrlQueryParams();
+
+  const $btnNext = $("#next");
+  const $btnBack = $("#back");
+  const $btnSend = $("#send");
+
   $btnNext.hide();
   $btnBack.hide();
   $btnSend.hide();
+
+  var isEfectosSecundariosSelected;
+
+  var firstSection = $('#first-section');
+  var lastSection = $('#last-section');
+  var warningSection = $('#last-section-warning');
+  var isSurveyAv = isSurveyAvailable(queryParams["token"]);
+  console.log(isSurveyAv);
+  var currentStep = 1;
+
+  firstSection.hide();
+  lastSection.hide();
+  
+  if(isSurveyAv){
+    showWelcomeSection();
+  }
+
+  if(isSurveyAv === false){
+  
+    showEndingSection();
+  }
+
+  if(isSurveyAv === 'error'){
+    
+    showWarningSection()
+  }
+
+  
+
+  // Hide the "Siguiente" button at startup
+  
 
   // Function to update the status of the "Siguiente" button
   function updateNextButtonState() {
@@ -66,6 +101,53 @@ $(document).ready(function () {
     }
   }
 
+  function getUrlQueryParams() {
+    var vars = [],
+      hash;
+    var hashes = window.location.href
+      .slice(window.location.href.indexOf("?") + 1)
+      .split("&");
+    for (var i = 0; i < hashes.length; i++) {
+      hash = hashes[i].split("=");
+      vars.push(hash[0]);
+      vars[hash[0]] = hash[1];
+    }
+    return vars;
+  }
+
+  function isSurveyAvailable(token) {
+    let isAvailable = false;
+    const payload = {
+      action: "survey_status",
+      token: token,
+    };
+
+    const headers = {
+      'Access-Control-Allow-Origin': '*',
+      "Content-Type": "application/json",
+      "Authorization": "Basic " + btoa(username + ":" + password)
+    };
+
+    $.ajax({
+      type: "POST",
+      url: url,
+      async: false,
+      dataType: 'json',
+      data: JSON.stringify(payload),
+      headers: headers,
+      success: (response) => {
+        if(response.event_status === "DRAFT" ){
+          isAvailable = true
+        }
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        warningSection.show();
+        isAvailable = 'error';
+      },
+    });
+    return isAvailable;
+  }
+
   function sendSurveyData() {
     let actualContraceptiveMethod = $("input[name = 'step2cks1']:checked").val();
     let areYouHappyWithYourMethod = $("input[name = 'step2radio']:checked").val();
@@ -78,46 +160,52 @@ $(document).ready(function () {
     let checkboxHumorChanges = $("#checkbox-humor-changes").is(":checked");
     let checkboxOther = $("#checkbox-other").is(":checked");
     
-    const url = 'http://localhost:3008/live-agents/registerClient'
+    const headers = {
+      'Access-Control-Allow-Origin': '*',
+      "Content-Type": "application/json",
+      "Authorization": "Basic " + btoa(username + ":" + password)
+    };
+
     const payload = {
+      
       action: "survey_record",
-      token: 'asd',//getUrlQueryParams().token,
+      token: queryParams.token,//getUrlQueryParams().token,
       surveyDatetime: new Date().toISOString(),
       datavalues: [
         {
-          datapoint: "rlDf5xEAR9I",
+          datapoint: "method",
           value: actualContraceptiveMethod ,
         },
         {
-          datapoint: "eAFhopWJO3i",
+          datapoint: "satisfiedWithMethod",
           value: areYouHappyWithYourMethod,
         },
         {
-          datapoint: "hV8zKz6qvoO",
+          datapoint: "unsatisfiedReason",
           value: mainUnhappynessReason ?? '',
         },
         {
-          datapoint: "lzVxmiJR595",
+          datapoint: "unsatSideEffect_chg",
           value: checkboxPeriodChanges,
         },
         {
-          datapoint: "WwOwtRA0xpK",
+          datapoint: "unsatSideEffect_pain",
           value: checkboxHeadache,
         },
         {
-          datapoint: "vAY2zgAJbsU",
+          datapoint: "unsatSideEffect_weight",
           value: checkboxWeightIncrease,
         },
         {
-          datapoint: "mQCvkW5oSsN",
+          datapoint: "unsatSideEffect_colic",
           value: checkboxStomachache,
         },
         {
-          datapoint: "FoynoeEDLja",
+          datapoint: "unsatSideEffect_humor",
           value: checkboxHumorChanges,
         },
         {
-          datapoint: "IHIzAhD7JhS",
+          datapoint: "unsatSideEffect_oth",
           value: checkboxOther,
         }
       ],
@@ -125,13 +213,72 @@ $(document).ready(function () {
 
     $.ajax({
       type: "POST",
+      async: false,
+      headers: headers,
+      dataType: 'json',
       url: url,
-      data: payload,
+      data: JSON.stringify(payload),
       success: endSurvey,
       error: function(jqXHR, textStatus, errorThrown){
-        alert('Hubo un problema al enviar la encuesta.');
+        $('*[id*=question-section]:visible').each(function() {
+          $(this).hide();
+        });
+      
+        showWarningSection();
+        return;
       }
-    })
+    });
+    updateNextButtonState();
+  }
+
+  function showWelcomeSection(){
+    firstSection.show();
+    lastSection.hide();
+    warningSection.hide();
+  }
+
+  function showEndingSection(){
+    currentStep = 3;
+    firstSection.hide();
+    warningSection.hide();
+
+    $btnNext.hide();
+    $btnSend.hide();
+    $btnBack.hide();
+
+    lastSection.show();
+  }
+
+  function showWarningSection(){
+    currentStep = 3;
+    $btnNext.hide();
+    $btnSend.hide();
+    $btnBack.hide();
+
+    firstSection.hide();
+    lastSection.hide();
+
+    
+    warningSection.show();
+  }
+
+  function endSurvey(){
+    if (currentStep < 3) {
+      $(".step" + currentStep).removeClass("active");
+      $(".section")
+        .eq(currentStep - 1)
+        .hide();
+      currentStep++;
+      $(".step" + currentStep).addClass("active");
+      $(".section")
+        .eq(currentStep - 1)
+        .show();
+      if (currentStep > 1 && currentStep < 3) {
+        //$("#back").show();
+      } else {
+        $("#back").hide();
+      }
+    }
   }
 
   $btnNext.click(function () {
@@ -156,24 +303,7 @@ $(document).ready(function () {
 
   $btnSend.click(sendSurveyData);
 
-  function endSurvey(){
-    if (currentStep < 3) {
-      $(".step" + currentStep).removeClass("active");
-      $(".section")
-        .eq(currentStep - 1)
-        .hide();
-      currentStep++;
-      $(".step" + currentStep).addClass("active");
-      $(".section")
-        .eq(currentStep - 1)
-        .show();
-      if (currentStep > 1 && currentStep < 3) {
-        //$("#back").show();
-      } else {
-        $("#back").hide();
-      }
-    }
-  }
+  
 
   //'Click' event for the "Anterior" button
   $btnBack.click(function () {
@@ -199,7 +329,7 @@ $(document).ready(function () {
 
   $('input[type="radio"][name="step2cks2"]').on("change", function () {
     isEfectosSecundariosSelected = $(
-      'input[type="radio"][name="step2cks2"][value="efectsec"]'
+      'input[type="radio"][name="step2cks2"][value="SEF"]'
     ).is(":checked");
 
     if (isEfectosSecundariosSelected) {
